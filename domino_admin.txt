@@ -1,0 +1,16 @@
+# restart http server with java
+restart task http
+
+# terminate and load http server
+tell http q
+load http
+
+# show web requests
+tell http show thread state
+
+# check if oda is installed
+tell http osgi ss org.openntf
+
+# refresh design
+load design source_server destination_server -f file.nsf
+
