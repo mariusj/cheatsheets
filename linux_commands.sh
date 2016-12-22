@@ -2,6 +2,10 @@
 sudo apt-get update && sudo apt-get dist-upgrade
 sudo apt-get install ubuntu-restricted-extras
 sudo apt-get remove --purge thunderbird rhythmbox
+sudo apt-get remove --purge gnome-mahjongg gnome-mines gnome-sudoku aisleriot
+sudo apt-get remove --purge cheese
+sudo apt-get remove --purge gnome-calendar
+sudo apt-get autoremove
 
 sudo ufw enable
 sudo ufw allow ssh
@@ -72,3 +76,18 @@ sudo apt-get update
 sudo apt-get install oracle-java8-installer
 sudo apt-get install oracle-java8-set-default
 
+# show CPU temperature
+acpi -t
+
+
+# install NFS share
+
+sudo apt install nfs-common
+
+sudo mount -t nfs server_name:/export/video /var/www/video
+sudo umount /var/www/video/
+
+# add this line to /etc/fstab 
+# server_name:/export/video /var/www/video nfs rw 0 0
+
+sudo mount -a
