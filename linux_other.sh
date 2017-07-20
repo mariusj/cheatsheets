@@ -100,3 +100,11 @@ sudo apt-get update
 sudo apt-get install virtualbox-5.1
 sudo apt-get install dkms
 
+
+
+###### auto turn off & wake up
+sudo crontab -e
+
+0 2 * * * /usr/sbin/rtcwake -m off -s 18000
+
+
