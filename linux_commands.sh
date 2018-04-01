@@ -7,11 +7,34 @@ sudo apt-get remove --purge cheese
 sudo apt-get remove --purge gnome-calendar
 sudo apt-get autoremove
 
+sudo apt install cups
+sudo apt install lynx
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt update
+sudo apt-get install oracle-java8-installer
+
+
 sudo ufw enable
 sudo ufw allow ssh
 sudo ufw limit ssh
 sudo ufw allow Samba
 
+# cups
+sudo ufw allow 631/tcp
+sudo cupsctl --remote-any
+sudo cupsctl --share-printers
+sudo nano /etc/cups/cupsd.conf
+sudo systemctl restart cups.service
+
+
+git config --global user.email "mariusz.jakubowski.79@gmail.com"
+git config --global user.name "Mariusz Jakubowski"
+
+
+git stash
+git pull
+git stash apply
 
 # Display all information about files/ directories
 ls –al
@@ -42,6 +65,7 @@ chmod -R u+x,g+w,o+r directory-name
 
 # Change owner of the file
 chown owner-user file
+chown www-data:www-data file
 
 # system information
 uname -a
@@ -91,3 +115,41 @@ sudo umount /var/www/video/
 # server_name:/export/video /var/www/video nfs rw 0 0
 
 sudo mount -a
+
+
+# nginx reload
+sudo service nginx reload
+systemctl status nginx.service
+
+
+# what listens on 80 port
+lsof -i :80 | grep LISTEN
+
+
+# supervisor
+sudo supervisorctl status
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl restart losowanie
+
+
+journalctl -xe
+
+
+# jira
+sudo apt-get install postgresql postgresql-contrib
+
+sudo -i -u postgres
+
+createuser --interactive
+createdb -E UNICODE -l C -T template0 jiradb
+
+psql
+GRANT ALL PRIVILEGES ON DATABASE jiradb TO jiradbuser;
+alter user jiradbuser with password 'password';
+\q
+
+ln -s /etc/nginx/sites-available/jira /etc/nginx/sites-enabled/
+
+
+
