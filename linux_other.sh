@@ -108,3 +108,33 @@ sudo crontab -e
 0 2 * * * /usr/sbin/rtcwake -m off -s 18000
 
 
+
+
+# torrent
+sudo apt-get install rtorrent
+cp /usr/share/doc/rtorrent/rtorrent.rc ~/.rtorrent.rc
+nano .rtorrent.rc
+
+sudo adduser --disabled-password --disabled-login --gecos "" rtorrent   
+sudo usermod -a -G plugdev,users,input,netdev,media  rtorrent           
+
+sudo nano /etc/systemd/system/rtorrent.service
+
+
+
+sudo cp ~/.rtorrent.rc /home/rtorrent/
+sudo chown rtorrent /home/rtorrent/.rtorrent.rc
+sudo chgrp rtorrent /home/rtorrent/.rtorrent.rc
+systemctl --user enable rt
+sudo systemctl --user enable rt
+sudo systemctl --user enable rtorrent
+sudo systemctl --user start rtorrent
+sudo userdel rtorrent
+
+
+sudo adduser --disabled-password  rtorrent
+sudo systemctl --user start rtorrent
+  
+
+  
+ 
