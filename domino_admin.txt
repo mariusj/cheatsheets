@@ -17,3 +17,8 @@ load design source_server destination_server -f file.nsf
 # diagonse osgi plugin problem (status INSTALLED)
 tell http osgi diag 123		# 123 is the id of the plugin to diagnose
 
+# run an agent
+tell amgr run "database.nsf" 'AgentName'
+
+# Directory Assistance reload
+show xdir reload
