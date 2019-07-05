@@ -22,3 +22,16 @@ tell amgr run "database.nsf" 'AgentName'
 
 # Directory Assistance reload
 show xdir reload
+
+# copy a database
+# first enable this option
+set config CLUSTER_ADMIN_ON=1
+# then issue this command to make a copy of a database
+CL copy src_server!!src_db.nsf dest_server!!dest_db.nsf
+
+# make a replica
+CL copy src_server!!src_db.nsf dest_server!!dest_db.nsf REPLICA
+
+# make a template (design without data)
+CL copy src_server!!src_db.nsf dest_server!!dest_db.nsf TEMPLATE
+
