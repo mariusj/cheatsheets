@@ -35,3 +35,17 @@ CL copy src_server!!src_db.nsf dest_server!!dest_db.nsf REPLICA
 # make a template (design without data)
 CL copy src_server!!src_db.nsf dest_server!!dest_db.nsf TEMPLATE
 
+# show list of tasks
+show tasks
+
+# shutdown tasks
+tell http q
+tell calconn q
+tell adminp q
+tell sched q
+tell rnrmgr q
+tell update q
+tell replica q
+tell router q
+tell amgr q
+
