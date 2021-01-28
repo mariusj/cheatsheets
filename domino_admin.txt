@@ -8,11 +8,11 @@ load http
 # show web requests
 tell http show thread state
 
+# show database info
+show database names.nsf
+
 # check if oda is installed
 tell http osgi ss org.openntf
-
-# refresh design
-load design source_server destination_server -f file.nsf
 
 
 # status of the plugin
@@ -25,6 +25,10 @@ load design source_server destination_server -f file.nsf
 
 # diagonse osgi plugin problem (status INSTALLED)
 tell http osgi diag 123		# 123 is the id of the plugin to diagnose
+
+# refresh design
+load design source_server destination_server -f file.nsf
+
 
 # run an agent
 tell amgr run "database.nsf" 'AgentName'
@@ -60,4 +64,10 @@ tell update q
 tell replica q
 tell router q
 tell amgr q
+
+# compact database
+load compact log.nsf -C
+
+# upgrade ods
+load compact -ODS -* -upgrade
 
