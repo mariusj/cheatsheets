@@ -2,3 +2,11 @@ dostęp do vpn z wirtualnej maszyny
 
 https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-guide/setup-nat-network
 
+New-VMSwitch -SwitchName "virt-vpn" -SwitchType Internal
+Get-NetAdapter
+New-NetIPAddress -IPAddress 192.168.1.1 -PrefixLength 24 -InterfaceIndex 49
+New-NetNat -Name MyNATnetwork -InternalIPInterfaceAddressPrefix 192.168.1.0/24
+
+Get-NetNat
+Get-VMSwitch
+Get-NetIPAddress -InterfaceAlias "vEthernet (virt-vpn)"
