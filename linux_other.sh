@@ -136,5 +136,6 @@ sudo adduser --disabled-password  rtorrent
 sudo systemctl --user start rtorrent
   
 
-  
- 
+# dlna
+sudo apt-get install minidlna
+sudo vi /etc/minidlna.conf

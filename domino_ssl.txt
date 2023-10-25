@@ -1,0 +1,11 @@
+kyrtool =c:\lotus\domino\notes.ini create -k d:\lotus\domino\data\keyring.kyr -p password
+
+
+kyrtool import roots -i C:\SSL\root.crt -k d:\lotus\domino\data\keyring.kyr
+kyrtool import roots -i C:\SSL\intermediate.crt -k d:\lotus\domino\data\keyring.kyr
+kyrtool import keys -i C:\SSL\server.key -k d:\lotus\domino\data\keyring.kyr
+kyrtool import certs -i C:\SSL\server.crt -k d:\lotus\domino\data\keyring.kyr
+
+kyrtool =c:\lotus\domino\notes.ini show keys -k d:\lotus\domino\data\keyring.kyr
+kyrtool =c:\lotus\domino\notes.ini show certs -k d:\lotus\domino\data\keyring.kyr
+
